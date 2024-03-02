@@ -35,7 +35,7 @@ class HexColor extends Color {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({super.key, required this.title});
+  const MyHomePage({super.key, required this.title});
 
   final String title;
 
@@ -61,15 +61,17 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void generateColors() {
-    var color1 = generateColor();
-    var color2 = generateColor();
-    var color3 = generateColor();
-    color1_hex = color1!.first;
-    color1_name = color1.last;
-    color2_hex = color2!.first;
-    color2_name = color2.last;
-    color3_hex = color3!.first;
-    color3_name = color3.last;
+    setState(() {
+      var color1 = generateColor();
+      var color2 = generateColor();
+      var color3 = generateColor();
+      color1_hex = color1!.first;
+      color1_name = color1.last;
+      color2_hex = color2!.first;
+      color2_name = color2.last;
+      color3_hex = color3!.first;
+      color3_name = color3.last;
+    });
   }
 
   @override
@@ -93,9 +95,7 @@ class _MyHomePageState extends State<MyHomePage> {
               textStyle: const TextStyle(fontSize: 20),
             ),
             onPressed: () {
-              setstate() {
-                generateColors();
-              }
+              generateColors();
             },
             child: const Text('Generate'),
           ),
